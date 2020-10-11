@@ -1,13 +1,13 @@
-## Retail Analysis with Walmart Data
+# Retail Analysis with Walmart Data
 
 
-### DESCRIPTION
+## DESCRIPTION
 
 One of the leading retail stores in the US, Walmart, would like to predict the sales and demand accurately. There are certain events and holidays which impact sales on each day. There are sales data available for 45 stores of Walmart. The business is facing a challenge due to unforeseen demands and runs out of stock some times, due to the inappropriate machine learning algorithm. An ideal ML algorithm will predict demand accurately and ingest factors like economic conditions including CPI, Unemployment Index, etc.
 
 Walmart runs several promotional markdown events throughout the year. These markdowns precede prominent holidays, the four largest of all, which are the Super Bowl, Labour Day, Thanksgiving, and Christmas. The weeks including these holidays are weighted five times higher in the evaluation than non-holiday weeks. Part of the challenge presented by this competition is modeling the effects of markdowns on these holiday weeks in the absence of complete/ideal historical data. Historical sales data for 45 Walmart stores located in different regions are available.
 
-#### Dataset Description
+### Dataset Description
 
 This is the historical data that covers sales from 2010-02-05 to 2012-11-01, in the file Walmart_Store_sales. Within this file you will find the following fields:
 
@@ -27,7 +27,7 @@ This is the historical data that covers sales from 2010-02-05 to 2012-11-01, in 
 
 - **Unemployment** - Prevailing unemployment rate
 
-#### Holiday Events
+### Holiday Events
 
 - **Super Bowl:** 12-Feb-10, 11-Feb-11, 10-Feb-12, 8-Feb-13
 - **Labour Day:** 10-Sep-10, 9-Sep-11, 7-Sep-12, 6-Sep-13
@@ -56,9 +56,9 @@ For Store 1 – Build  prediction models to forecast demand
 
 - Change dates into days by creating new variable.
 
-### Solution & Analysis
+## Solution & Analysis
 
-#### Import the libraries
+### Import the libraries
 
 
 ```python
@@ -72,7 +72,7 @@ import statsmodels.formula.api as sm
 import scipy.stats as st
 ```
 
-#### Import the Walmart Store Data
+### Import the Walmart Store Data
 
 
 ```python
@@ -84,19 +84,6 @@ retail_data.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -193,7 +180,7 @@ retail_data.max()
 
 
 
-#### Which store has maximum sales ?
+### Which store has maximum sales ?
 
 
 ```python
@@ -206,19 +193,6 @@ maximum_sales.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -276,19 +250,6 @@ maximum_sales.loc[maximum_sales['Weekly_Sales']==maximum_sales['Weekly_Sales'].m
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -311,7 +272,7 @@ maximum_sales.loc[maximum_sales['Weekly_Sales']==maximum_sales['Weekly_Sales'].m
 
 
 
-#### Which store has maximum standard deviation i.e., the sales vary a lot. Also, find out the coefficient of mean to standard deviation?
+### Which store has maximum standard deviation i.e., the sales vary a lot. Also, find out the coefficient of mean to standard deviation?
 
 
 ```python
@@ -325,19 +286,6 @@ store_deviation.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead tr th {
-        text-align: left;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr>
@@ -414,19 +362,6 @@ store_deviation.loc[store_deviation[('Weekly_Sales', 'std')]==store_deviation[('
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead tr th {
-        text-align: left;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr>
@@ -460,7 +395,7 @@ store_deviation.loc[store_deviation[('Weekly_Sales', 'std')]==store_deviation[('
 
 
 
-#### Which store/s has good quarterly growth rate in Q3’2012?
+### Which store/s has good quarterly growth rate in Q3’2012?
 
 
 ```python
@@ -515,19 +450,6 @@ Q3_sales.loc[Q3_sales.Growth_Rate == Q3_sales.Growth_Rate.max()]
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -550,7 +472,7 @@ Q3_sales.loc[Q3_sales.Growth_Rate == Q3_sales.Growth_Rate.max()]
 
 
 
-#### Some holidays have a negative impact on sales. Find out holidays which have higher sales than the mean sales in non-holiday season for all stores together?
+### Some holidays have a negative impact on sales. Find out holidays which have higher sales than the mean sales in non-holiday season for all stores together?
 
 
 ```python
@@ -591,7 +513,7 @@ print('The mean of Sales for Non Holidays is: ',NonHolidaySalesMean)
     The mean of Sales for Non Holidays is:  1041256.3802088555
 
 
-#### Provide a monthly and semester view of sales in units and give insights
+### Provide a monthly and semester view of sales in units and give insights
 
 
 ```python
@@ -629,7 +551,7 @@ plt.show()
     
 
 
-#### Linear Regression – Utilize variables like date and restructure dates as 1 for 5 Feb 2010 (starting from the earliest date in order). Hypothesize if CPI, unemployment, and fuel price have any impact on sales
+### Linear Regression – Utilize variables like date and restructure dates as 1 for 5 Feb 2010 (starting from the earliest date in order). Hypothesize if CPI, unemployment, and fuel price have any impact on sales
 
 
 ```python
@@ -641,19 +563,6 @@ store1_data.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -883,7 +792,7 @@ Hence, its clear that **CPI** & **Unemployment** have a negative impact and ther
 
 
 
-#### Change dates into days by creating new variable.
+### Change dates into days by creating new variable.
 
 
 ```python
@@ -895,19 +804,6 @@ retail_data.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
